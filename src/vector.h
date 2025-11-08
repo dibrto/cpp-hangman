@@ -1,5 +1,10 @@
 #pragma once
 
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 template<typename T> class Vector {
     public:
         Vector(int cap = 100);
@@ -8,9 +13,10 @@ template<typename T> class Vector {
         Vector& operator=(const Vector& other);
 
         int getSize() const;
+        bool empty() const;
+        T& at(int index);
         // void push_back(const T& value);
         // void pop_back();
-        // T& at(int index);
            
     private:
         T* data;
@@ -24,7 +30,9 @@ template <typename T> Vector<T>::Vector(int cap)
     , size(0)
     , capacity(cap) {}
 
-template <typename T> Vector<T>::~Vector() { delete[] data; }
+template <typename T> Vector<T>::~Vector() {
+    delete[] data; 
+}
 
 template <typename T> Vector<T>::Vector(const Vector &other)
     : capacity(other.capacity)
@@ -56,4 +64,16 @@ template <typename T> Vector<T> &Vector<T>::operator=(const Vector<T> &other){
 
 template <typename T> int Vector<T>::getSize() const {
     return size;
+}
+
+template <typename T> bool Vector<T>::empty() const {
+    return size == 0;
+}
+
+template <typename T> T &Vector<T>::at(int index){
+    if (empty()){
+       throw std::out_of_range("Index out of range");
+    }
+
+    return data[index];
 }

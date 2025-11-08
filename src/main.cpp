@@ -1,7 +1,4 @@
-#include <iostream>
 #include "vector.h"
-
-using namespace std;
 
 int main(int argc, char const *argv[]){
     Vector<int> vec;
@@ -9,6 +6,9 @@ int main(int argc, char const *argv[]){
     Vector<int> vec3;
     vec3 = vec;
 
+    cout << vec.getSize() << endl;
+    cout << vec.empty() << endl;
+    cout << vec.at(0) << endl;
     
     return 0;
 }
