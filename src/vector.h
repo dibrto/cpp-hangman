@@ -7,31 +7,31 @@ template<typename T> class Vector {
         Vector(const Vector& other);
         Vector& operator=(const Vector& other);
 
+        int getSize() const;
         // void push_back(const T& value);
         // void pop_back();
         // T& at(int index);
-        // int size() const;
            
     private:
         T* data;
-        int lastElem;
+        int size;
         int capacity;
         // void resize();
 };
 
 template <typename T> Vector<T>::Vector(int cap)
     : data(new T[100])
-    , lastElem(0)
+    , size(0)
     , capacity(cap) {}
 
 template <typename T> Vector<T>::~Vector() { delete[] data; }
 
 template <typename T> Vector<T>::Vector(const Vector &other)
     : capacity(other.capacity)
-    , lastElem(other.lastElem)
+    , size(other.size)
     , data(new T[capacity])
 {
-    for (int i = 0; i < lastElem; i++){
+    for (int i = 0; i < size; i++){
         data[i] = other.data[i];
     }
 }
@@ -44,12 +44,16 @@ template <typename T> Vector<T> &Vector<T>::operator=(const Vector<T> &other){
     delete[] data;
 
     capacity = other.capacity;
-    lastElem = other.lastElem;
+    size = other.size;
     data = new T[capacity];
 
-    for (int i = 0; i < lastElem; i++){
+    for (int i = 0; i < size; i++){
         data[i] = other.data[i];
     }
 
     return *this;
+}
+
+template <typename T> int Vector<T>::getSize() const {
+    return size;
 }
