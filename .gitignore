@@ -43,3 +43,4 @@
 # ide
 build
 .vscode
+*.pdf
