@@ -15,14 +15,14 @@ template<typename T> class Vector {
         int getSize() const;
         bool empty() const;
         T& at(int index);
-        // void push_back(const T& value);
-        // void pop_back();
+        void push_back(const T& value);
+        void print();
            
     private:
         T* data;
         int size;
         int capacity;
-        // void resize();
+        void resize();
 };
 
 template <typename T> Vector<T>::Vector(int cap)
@@ -76,4 +76,32 @@ template <typename T> T &Vector<T>::at(int index){
     }
 
     return data[index];
+}
+
+template <typename T> void Vector<T>::resize(){
+    capacity = (capacity == 0 ? 1 : capacity * 2);
+
+    T* tmp = new T[capacity];
+    for (int i = 0; i < size; i++){
+        tmp[i] = data[i];
+    }
+    
+    delete[] data;
+    data = tmp;
+}
+
+template <typename T> void Vector<T>::push_back(const T &value){
+    if (size == capacity){
+        resize();
+    }
+
+    data[size] = value;
+    size++;
+}
+
+template <typename T> void Vector<T>::print(){
+    for (int i = 0; i < size; i++){
+        cout << data[i] << " ";
+    }    
+    cout << endl;
 }
