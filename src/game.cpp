@@ -6,7 +6,7 @@ Game::Game(){
 }
 
 int Game::loadWords(){
-    const std::string fileName = "words.txt";
+    const string fileName = "words.txt";
 
     std::ifstream file(fileName);
 
@@ -14,7 +14,7 @@ int Game::loadWords(){
         throw std::runtime_error("Failed to open file" + fileName);
     }
 
-    std::string line;
+    string line;
     while (std::getline(file, line)) {
         vec.push_back(line);
     }
@@ -26,7 +26,40 @@ int Game::loadWords(){
 void Game::run(){
     getRandomWord();
 
-    cout << targetWord;
+    string userWord(targetWord.size(), '_');
+    char letter;
+    bool found;
+
+    /*!!!*/ cout << targetWord << endl;
+
+    while (userWord != targetWord) {
+        // show curr guesses
+        cout << endl << "Current: ";
+        for (int i = 0; i < userWord.size(); i++){
+            cout << userWord[i] << " ";
+        }
+        cout << endl;
+
+        // new guess
+        cout << "Enter letter: ";
+        cin >> letter;        
+        found = false;
+        for (int i = 0; i < targetWord.size(); i++) {
+            if (targetWord[i] == letter) {
+                userWord[i] = letter;
+                found = true;
+            }
+        }
+
+        if (found) {
+            cout << "Found" << endl;
+        } 
+        else {
+            cout << "There is no such letter." << endl;
+        }
+    }
+
+    cout << "Congratulations! The word is: " << targetWord << endl;
 }
 
 void Game::getRandomWord(){
