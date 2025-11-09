@@ -1,11 +1,7 @@
-#include "vector.h"
+#include "game.h"
 
 int main(int argc, char const *argv[]){
-    Vector<int> vec(1);
-    
-    vec.push_back(3);
-    vec.push_back(4);
-    vec.print();
-    
+    Game game;
+
     return 0;
 }
