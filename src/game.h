@@ -11,5 +11,5 @@ public:
 
 private:
     Vector<std::string> vec;
-    int loadWords(Vector<std::string> &vec);
+    int loadWords();
 };

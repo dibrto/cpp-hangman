@@ -1,12 +1,10 @@
 #include "game.h"
 
 Game::Game(){
-   loadWords(vec);
-
-   vec.print();
+   loadWords();
 }
 
-int Game::loadWords(Vector<std::string> &vec){
+int Game::loadWords(){
     const std::string fileName = "words.txt";
 
     std::ifstream file(fileName);
