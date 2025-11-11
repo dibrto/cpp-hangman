@@ -15,6 +15,14 @@ using std::string;
 class Game {
 public:
     Game();
+    void run();
+
+private:
+    Vector<string> vec;
+    string targetWord;
+    string userWord;
+    unsigned short int errCount;
+    unsigned short int maxErrCount;
 
     const char* HANGMAN[7] = {
         "   +---+\n"
@@ -72,17 +80,8 @@ public:
         "  / \\  |\n"
         "       |\n"
         "========"
-    };
-
-private:
-    Vector<string> vec;
-    string targetWord;
-    string userWord;
-    unsigned short int errCount;
-    unsigned short int maxErrCount;
-
+    };    
 
     int loadWords();
-    void run();
     void getRandomWord();
 };

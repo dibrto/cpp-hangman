@@ -5,7 +5,6 @@ Game::Game()
 , maxErrCount(6)
 {
    loadWords();
-   run();
 }
 
 int Game::loadWords(){
