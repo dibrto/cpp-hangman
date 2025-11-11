@@ -1,6 +1,9 @@
 #include "game.h"
 
-Game::Game(){
+Game::Game()
+: errCount(0)
+, maxErrCount(6)
+{
    loadWords();
    run();
 }
@@ -29,10 +32,10 @@ void Game::run(){
     string userWord(targetWord.size(), '_');
     char letter;
     bool found;
-
+    cout << HANGMAN[errCount] << endl;
     /*!!!*/ cout << targetWord << endl;
 
-    while (userWord != targetWord) {
+    while (userWord != targetWord && errCount != maxErrCount) {
         // show curr guesses
         cout << endl << "Current: ";
         for (int i = 0; i < userWord.size(); i++){
@@ -51,15 +54,14 @@ void Game::run(){
             }
         }
 
-        if (found) {
-            cout << "Found" << endl;
-        } 
-        else {
-            cout << "There is no such letter." << endl;
+        if (!found){
+            errCount++;
+            cout << HANGMAN[errCount] << endl;
         }
     }
 
-    cout << "Congratulations! The word is: " << targetWord << endl;
+    if (errCount != maxErrCount)
+        cout << "Congratulations! The word is: " << targetWord << endl;
 }
 
 void Game::getRandomWord(){

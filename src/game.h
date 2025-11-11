@@ -16,10 +16,71 @@ class Game {
 public:
     Game();
 
+    const char* HANGMAN[7] = {
+        "   +---+\n"
+        "   |   |\n"
+        "       |\n"
+        "       |\n"
+        "       |\n"
+        "       |\n"
+        "========",
+
+        "   +---+\n"
+        "   |   |\n"
+        "   O   |\n"
+        "       |\n"
+        "       |\n"
+        "       |\n"
+        "========",
+
+        "   +---+\n"
+        "   |   |\n"
+        "   O   |\n"
+        "   |   |\n"
+        "       |\n"
+        "       |\n"
+        "========",
+
+        "   +---+\n"
+        "   |   |\n"
+        "   O   |\n"
+        "  /|   |\n"
+        "       |\n"
+        "       |\n"
+        "========",
+
+        "   +---+\n"
+        "   |   |\n"
+        "   O   |\n"
+        "  /|\\  |\n"
+        "       |\n"
+        "       |\n"
+        "========",
+
+        "   +---+\n"
+        "   |   |\n"
+        "   O   |\n"
+        "  /|\\  |\n"
+        "  /    |\n"
+        "       |\n"
+        "========",
+
+        "   +---+\n"
+        "   |   |\n"
+        "   O   |\n"
+        "  /|\\  |\n"
+        "  / \\  |\n"
+        "       |\n"
+        "========"
+    };
+
 private:
     Vector<string> vec;
     string targetWord;
     string userWord;
+    unsigned short int errCount;
+    unsigned short int maxErrCount;
+
 
     int loadWords();
     void run();
