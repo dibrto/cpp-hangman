@@ -58,8 +58,11 @@ void Game::run(){
         }
     }
 
+    cout << endl;
     if (errCount != maxErrCount)
-        cout << "Congratulations! The word is: " << targetWord << endl;
+        cout << "Congratulations! You guessed the word. "<< endl;
+    
+    cout << "The word is: " << targetWord << endl;
 }
 
 void Game::getRandomWord(){
