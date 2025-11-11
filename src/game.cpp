@@ -32,7 +32,6 @@ void Game::run(){
     char letter;
     bool found;
     cout << HANGMAN[errCount] << endl;
-    /*!!!*/ cout << targetWord << endl;
 
     while (userWord != targetWord && errCount != maxErrCount) {
         // show curr guesses
